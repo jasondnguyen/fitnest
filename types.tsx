@@ -9,14 +9,29 @@ export type RootStackParamList = {
 };
 
 export type BottomTabParamList = {
-  TabOne: undefined;
-  TabTwo: undefined;
+  Workout: undefined;
+  PlateCalculator: undefined;
+  Home: undefined;
+  CalorieCounter: undefined;
+  Learn: undefined;
 };
 
-export type TabOneParamList = {
-  TabOneScreen: undefined;
+export type WorkoutParamList = {
+  WorkoutScreen: undefined;
 };
 
-export type TabTwoParamList = {
-  TabTwoScreen: undefined;
+export type PlateCalculatorParamList = {
+  PlateCalculatorScreen: undefined;
+};
+
+export type HomeParamList = {
+  HomeScreen: undefined;
+};
+
+export type CalorieCounterParamList = {
+  CalorieCounterScreen: undefined;
+};
+
+export type LearnParamList = {
+  LearnScreen: undefined;
 };

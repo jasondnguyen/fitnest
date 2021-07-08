@@ -10,9 +10,19 @@ import * as React from 'react';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
-import TabOneScreen from '../screens/TabOneScreen';
-import TabTwoScreen from '../screens/TabTwoScreen';
-import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
+import WorkoutScreen from '../screens/WorkoutScreen';
+import PlateCalculatorScreen from '../screens/PlateCalculatorScreen';
+import HomeScreen from '../screens/HomeScreen';
+import CalorieCounterScreen from '../screens/CalorieCounterScreen';
+import LearnScreen from '../screens/LearnScreen';
+import {
+  BottomTabParamList,
+  WorkoutParamList,
+  PlateCalculatorParamList,
+  HomeParamList,
+  CalorieCounterParamList,
+  LearnParamList,
+} from '../types';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -21,20 +31,52 @@ export default function BottomTabNavigator() {
 
   return (
     <BottomTab.Navigator
-      initialRouteName="TabOne"
-      tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}>
+      initialRouteName='Home'
+      tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}
+    >
       <BottomTab.Screen
-        name="TabOne"
-        component={TabOneNavigator}
+        name='Workout'
+        component={WorkoutNavigator}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon name='ios-code' color={color} />
+          ),
         }}
       />
       <BottomTab.Screen
-        name="TabTwo"
-        component={TabTwoNavigator}
+        name='Plate Calculator'
+        component={PlateCalcuatorNavigator}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon name='ios-code' color={color} />
+          ),
+        }}
+      />
+      <BottomTab.Screen
+        name='Home'
+        component={HomeNavigator}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon name='ios-code' color={color} />
+          ),
+        }}
+      />
+      <BottomTab.Screen
+        name='Calorie Counter'
+        component={CalorieCounterNavigator}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon name='ios-code' color={color} />
+          ),
+        }}
+      />
+      <BottomTab.Screen
+        name='Learn'
+        component={LearnNavigator}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon name='ios-code' color={color} />
+          ),
         }}
       />
     </BottomTab.Navigator>
@@ -43,36 +85,81 @@ export default function BottomTabNavigator() {
 
 // You can explore the built-in icon families and icons on the web at:
 // https://icons.expo.fyi/
-function TabBarIcon(props: { name: React.ComponentProps<typeof Ionicons>['name']; color: string }) {
+function TabBarIcon(props: {
+  name: React.ComponentProps<typeof Ionicons>['name'];
+  color: string;
+}) {
   return <Ionicons size={30} style={{ marginBottom: -3 }} {...props} />;
 }
 
 // Each tab has its own navigation stack, you can read more about this pattern here:
 // https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
-const TabOneStack = createStackNavigator<TabOneParamList>();
+const WorkoutStack = createStackNavigator<WorkoutParamList>();
 
-function TabOneNavigator() {
+function WorkoutNavigator() {
   return (
-    <TabOneStack.Navigator>
-      <TabOneStack.Screen
-        name="TabOneScreen"
-        component={TabOneScreen}
-        options={{ headerTitle: 'Tab One Title' }}
+    <WorkoutStack.Navigator>
+      <WorkoutStack.Screen
+        name='WorkoutScreen'
+        component={WorkoutScreen}
+        options={{ headerTitle: 'View Workouts' }}
       />
-    </TabOneStack.Navigator>
+    </WorkoutStack.Navigator>
   );
 }
 
-const TabTwoStack = createStackNavigator<TabTwoParamList>();
+const PlateCalculatorStack = createStackNavigator<PlateCalculatorParamList>();
 
-function TabTwoNavigator() {
+function PlateCalcuatorNavigator() {
   return (
-    <TabTwoStack.Navigator>
-      <TabTwoStack.Screen
-        name="TabTwoScreen"
-        component={TabTwoScreen}
-        options={{ headerTitle: 'Tab Two Title' }}
+    <PlateCalculatorStack.Navigator>
+      <PlateCalculatorStack.Screen
+        name='PlateCalculatorScreen'
+        component={PlateCalculatorScreen}
+        options={{ headerTitle: 'Plate Calculator' }}
       />
-    </TabTwoStack.Navigator>
+    </PlateCalculatorStack.Navigator>
+  );
+}
+
+const CalorieCounterStack = createStackNavigator<CalorieCounterParamList>();
+
+function CalorieCounterNavigator() {
+  return (
+    <CalorieCounterStack.Navigator>
+      <CalorieCounterStack.Screen
+        name='CalorieCounterScreen'
+        component={CalorieCounterScreen}
+        options={{ headerTitle: 'Tab Three Title' }}
+      />
+    </CalorieCounterStack.Navigator>
+  );
+}
+
+const LearnStack = createStackNavigator<LearnParamList>();
+
+function LearnNavigator() {
+  return (
+    <LearnStack.Navigator>
+      <LearnStack.Screen
+        name='LearnScreen'
+        component={LearnScreen}
+        options={{ headerTitle: 'Tab Four Title' }}
+      />
+    </LearnStack.Navigator>
+  );
+}
+
+const HomeStack = createStackNavigator<HomeParamList>();
+
+function HomeNavigator() {
+  return (
+    <HomeStack.Navigator>
+      <HomeStack.Screen
+        name='HomeScreen'
+        component={HomeScreen}
+        options={{ headerTitle: 'Home Title' }}
+      />
+    </HomeStack.Navigator>
   );
 }
