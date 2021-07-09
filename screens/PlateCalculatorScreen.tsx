@@ -1,14 +1,12 @@
 import * as React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, SafeAreaView } from 'react-native';
 import PlateCalculator from '../components/PlateCalculator/PlateCalculator';
-
-import { Text, View } from '../components/Themed';
 
 export default function PlateCalculatorScreen() {
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <PlateCalculator />
-    </View>
+    </SafeAreaView>
   );
 }
 

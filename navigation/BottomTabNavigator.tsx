@@ -8,8 +8,6 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
 
-import Colors from '../constants/Colors';
-import useColorScheme from '../hooks/useColorScheme';
 import WorkoutScreen from '../screens/WorkoutScreen';
 import PlateCalculatorScreen from '../screens/PlateCalculatorScreen';
 import HomeScreen from '../screens/HomeScreen';
@@ -27,13 +25,8 @@ import {
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
 export default function BottomTabNavigator() {
-  const colorScheme = useColorScheme();
-
   return (
-    <BottomTab.Navigator
-      initialRouteName='Home'
-      tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}
-    >
+    <BottomTab.Navigator initialRouteName='Home'>
       <BottomTab.Screen
         name='Workout'
         component={WorkoutNavigator}
