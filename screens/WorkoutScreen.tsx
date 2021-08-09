@@ -1,14 +1,12 @@
 import * as React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import EditScreenInfo from '../components/EditScreenInfo';
+import Workouts from '../components/Workouts/Workouts';
 
 export default function TabOneScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Hello World</Text>
-      <View style={styles.separator} />
-      <EditScreenInfo path='/screens/TabOneScreen.tsx' />
+      <Workouts />
     </View>
   );
 }
