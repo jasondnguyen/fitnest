@@ -1,6 +1,11 @@
 import * as React from 'react';
-import { Text, SafeAreaView, TouchableOpacity, StyleSheet } from 'react-native';
-import { Card, List } from 'react-native-paper';
+import {
+  Text,
+  SafeAreaView,
+  TouchableOpacity,
+  StyleSheet,
+  FlatList,
+} from 'react-native';
 import DayCard from './DayCard';
 
 const nSuns5Day = [
@@ -15,10 +20,11 @@ const nSuns5Day = [
 ];
 
 const Workouts = () => {
-  const renderItem = ({ item }) => {
-    console.log(item);
-    <Text>{item.dayNumber}</Text>;
-  };
+  const renderItem = ({
+    item,
+  }: {
+    item: { dayNumber: number; lifts: string[] };
+  }) => <DayCard dayNumber={item.dayNumber} lifts={item.lifts}></DayCard>;
 
   return (
     <SafeAreaView style={styles.container}>
@@ -35,8 +41,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     flex: 1,
-  },
-  cards: {
-    width: 100,
   },
 });

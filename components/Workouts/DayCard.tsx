@@ -1,16 +1,18 @@
 import * as React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet, Dimensions } from 'react-native';
 import { Card, Title, Paragraph } from 'react-native-paper';
 import { string } from 'yargs';
 
-const DayCard = ({ dayNumber, lifts }) => {
-  console.log(dayNumber);
-  console.log(lifts);
+interface Day {
+  dayNumber: number;
+  lifts: string[];
+}
 
+const DayCard = ({ dayNumber, lifts }: Day) => {
   return (
-    <Card>
+    <Card style={styles.card}>
       <Card.Content>
-        <Title>{dayNumber}</Title>
+        <Title>Day {dayNumber}</Title>
         <Paragraph>{lifts.join(', ')}</Paragraph>
       </Card.Content>
     </Card>
@@ -18,3 +20,9 @@ const DayCard = ({ dayNumber, lifts }) => {
 };
 
 export default DayCard;
+
+const styles = StyleSheet.create({
+  card: {
+    marginTop: 25,
+  },
+});

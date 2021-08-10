@@ -1,5 +1,12 @@
 import * as React from 'react';
-import { StyleSheet, Image, View, Text, Dimensions } from 'react-native';
+import {
+  StyleSheet,
+  Image,
+  View,
+  Text,
+  Dimensions,
+  ImageSourcePropType,
+} from 'react-native';
 import Images from '../Layout/images';
 
 const size_proportion = Dimensions.get('window').height * 0.1;
@@ -7,30 +14,39 @@ const font_proportion = Dimensions.get('window').height * 0.05;
 
 interface Props {
   metric: string;
-  plate: Object;
+  plate: number;
 }
 
-const selectImage = (metric: string, plate: number) => {
-  const plateArray = {
-    lb: {
-      45: Images.lb[45],
-      35: Images.lb[35],
-      25: Images.lb[25],
-      10: Images.lb[10],
-      5: Images.lb[5],
-      2.5: Images.lb[2.5],
-    },
-    kg: {
-      20: Images.kg[20],
-      15: Images.kg[15],
-      10: Images.kg[10],
-      5: Images.kg[5],
-      2.5: Images.kg[2.5],
-      1.25: Images.kg[1.25],
-    },
-  };
+interface plateArray {
+  metric: string;
+  plates: { weight: number; image: ImageSourcePropType }[];
+}
 
-  return plateArray[metric][plate];
+const selectImage = (metric: string, plate: string) => {
+  const plateImages: plateArray[] = [
+    {
+      metric: 'lb',
+      plates: [
+        { weight: 45, image: Images.lb[45] },
+        { weight: 35, image: Images.lb[35] },
+        { weight: 25, image: Images.lb[25] },
+        { weight: 10, image: Images.lb[10] },
+        { weight: 5, image: Images.lb[5] },
+        { weight: 2.5, image: Images.lb[2.5] },
+      ],
+    },
+    {
+      metric: 'kg',
+      plates: [
+        { weight: 20, image: Images.kg[20] },
+        { weight: 15, image: Images.kg[15] },
+        { weight: 10, image: Images.kg[10] },
+        { weight: 5, image: Images.kg[5] },
+        { weight: 2.5, image: Images.kg[2.5] },
+        { weight: 1.25, image: Images.kg[1.25] },
+      ],
+    },
+  ];
 };
 
 const PlateDisplay: React.FC<Props> = ({ metric, plate }) => {
