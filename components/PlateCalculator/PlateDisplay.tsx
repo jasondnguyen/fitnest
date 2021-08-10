@@ -22,31 +22,41 @@ interface plateArray {
   plates: { weight: number; image: ImageSourcePropType }[];
 }
 
-const selectImage = (metric: string, plate: string) => {
-  const plateImages: plateArray[] = [
-    {
-      metric: 'lb',
-      plates: [
-        { weight: 45, image: Images.lb[45] },
-        { weight: 35, image: Images.lb[35] },
-        { weight: 25, image: Images.lb[25] },
-        { weight: 10, image: Images.lb[10] },
-        { weight: 5, image: Images.lb[5] },
-        { weight: 2.5, image: Images.lb[2.5] },
-      ],
-    },
-    {
-      metric: 'kg',
-      plates: [
-        { weight: 20, image: Images.kg[20] },
-        { weight: 15, image: Images.kg[15] },
-        { weight: 10, image: Images.kg[10] },
-        { weight: 5, image: Images.kg[5] },
-        { weight: 2.5, image: Images.kg[2.5] },
-        { weight: 1.25, image: Images.kg[1.25] },
-      ],
-    },
-  ];
+const plateImages: plateArray[] = [
+  {
+    metric: 'lb',
+    plates: [
+      { weight: 45, image: Images.lb[45] },
+      { weight: 35, image: Images.lb[35] },
+      { weight: 25, image: Images.lb[25] },
+      { weight: 10, image: Images.lb[10] },
+      { weight: 5, image: Images.lb[5] },
+      { weight: 2.5, image: Images.lb[2.5] },
+    ],
+  },
+  {
+    metric: 'kg',
+    plates: [
+      { weight: 20, image: Images.kg[20] },
+      { weight: 15, image: Images.kg[15] },
+      { weight: 10, image: Images.kg[10] },
+      { weight: 5, image: Images.kg[5] },
+      { weight: 2.5, image: Images.kg[2.5] },
+      { weight: 1.25, image: Images.kg[1.25] },
+    ],
+  },
+];
+
+const selectImage = (chosenMetric: string, plate: number) => {
+  for (let plateImage of plateImages) {
+    if (plateImage.metric == chosenMetric) {
+      for (let plateWeight of plateImage.plates) {
+        if (plateWeight.weight == plate) {
+          return plateWeight.image;
+        }
+      }
+    }
+  }
 };
 
 const PlateDisplay: React.FC<Props> = ({ metric, plate }) => {
