@@ -13,6 +13,8 @@ Amplify.configure(config);
 
 const theme = {
   ...DefaultTheme,
+  dark: false,
+  roundness: 2,
   colors: {
     ...DefaultTheme.colors,
     primary: 'red',
